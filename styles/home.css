@@ -1,0 +1,63 @@
+#home {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/images/background-pictures/home-background.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+}
+
+.page {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    position: relative; /* Position context for absolutely positioned children */
+    height: 100vh; /* Full height of the viewport */
+    text-align: center; /* Center text */
+    z-index: 1; /* Ensure content is above circles */
+}
+
+
+h1 {
+    color: white;
+    font-size: 5vw;;
+}
+
+.circle-container {
+    position: absolute; /* Position circles relative to .page */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0; /* Behind the text */
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0; /* Start invisible */
+    animation: twinkle 1.5s infinite; /* Animation for twinkling */
+}
+
+/* Create circles with different sizes */
+.circle {
+    width: 30px; /* Default size */
+    height: 30px; /* Default size */
+}
+
+/* Twinkling animation */
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0; /* Invisible at start and end */
+    }
+    40% {
+        opacity: 1; /* Fully visible at mid-point */
+    }
+    70% {
+        opacity: 0.5;
+    }
+}
