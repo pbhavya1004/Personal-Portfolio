@@ -12,50 +12,66 @@
 
 .page {
     display: flex;
-    flex-direction: column; /* Stack children vertically */
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    position: relative; /* Position context for absolutely positioned children */
-    height: 100vh; /* Full height of the viewport */
-    text-align: center; /* Center text */
-    z-index: 1; /* Ensure content is above circles */
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    position: relative; 
+    height: 100vh; 
+    text-align: center; 
+    z-index: 1; 
 }
 
 
 h1 {
     color: white;
-    font-size: 5vw;;
+    font-size: 5vw;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+.writing {
+    overflow: hidden;
+    width:0;
+    animation: show 10s steps(80, end) forwards;
+}
+
+@keyframes show {
+    from { width: 0;}
+    to {width: 100%; }
+}
+
+
+
+
+
 .circle-container {
-    position: absolute; /* Position circles relative to .page */
+    position: absolute; 
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 0; /* Behind the text */
+    z-index: 0; 
 }
 
 .circle {
     position: absolute;
     border-radius: 50%;
-    opacity: 0; /* Start invisible */
-    animation: twinkle 1.5s infinite; /* Animation for twinkling */
+    opacity: 0; 
+    animation: twinkle 1.5s infinite; 
 }
 
-/* Create circles with different sizes */
+
 .circle {
-    width: 30px; /* Default size */
-    height: 30px; /* Default size */
+    width: 30px;
+    height: 30px; 
 }
 
-/* Twinkling animation */
+
 @keyframes twinkle {
     0%, 100% {
-        opacity: 0; /* Invisible at start and end */
+        opacity: 0; 
     }
     40% {
-        opacity: 1; /* Fully visible at mid-point */
+        opacity: 1; 
     }
     70% {
         opacity: 0.5;
