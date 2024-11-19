@@ -27,7 +27,7 @@
     left: 50%;
     transform: translateX(-50%);
     font-size: 1rem;
-    color: black;
+    color: #49755e;
     padding: 2px 6px;
     border-radius: 4px;
     opacity: 0; 
@@ -37,4 +37,9 @@
 
 .skill-icon-wrapper:hover .skill-text {
     opacity: 1;
+}
+
+.skill-icon-wrapper:hover .skill-icon {
+    width: 20%;
+    height: auto;
 }
