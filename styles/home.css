@@ -24,14 +24,14 @@
 
 h1 {
     color: white;
-    font-size: 5vw;
+    font-size: 15vw;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .writing {
     overflow: hidden;
     width:0;
-    animation: show 10s steps(80, end) forwards;
+    animation: show 5s steps(80, end) infinite;
 }
 
 @keyframes show {

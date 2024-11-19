@@ -27,7 +27,8 @@
     top: 110%; 
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1rem;
+    font-size: 1vw;
+    font-family: 'Times New Roman', Times, serif;
     color: #49755e;
     padding: 2px 6px;
     border-radius: 4px;
@@ -43,4 +44,20 @@
 .skill-icon-wrapper:hover .skill-icon {
     width: 20%;
     height: auto;
+}
+
+.skills-title-box {
+    position: absolute;
+    top: 60%; 
+    left: 20%;
+    transform: translateX(-50%);
+    background-color: #061736; 
+    color: white; 
+    font-size: 2vw;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    padding: 6vw 12vw;
+    text-align: center;
+    z-index: 1;
+    
 }
