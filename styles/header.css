@@ -52,6 +52,12 @@
     margin-bottom: 5px;
     margin-top: 2px;
     cursor: pointer;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.icon:hover {
+    width: 28px;
+    height: 28px;
 }
 
 
@@ -67,3 +73,6 @@
     display: flex
 }
 
+.header-text {
+    color: #49755e;
+}
