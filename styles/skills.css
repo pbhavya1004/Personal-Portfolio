@@ -1,0 +1,40 @@
+.icon-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-template-rows: repeat(4, auto); 
+    justify-items: center; 
+    align-items: center; 
+    height: 70vh;
+    width: 85vw;
+    background-color: white;
+    position: relative;
+}
+
+.skill-icon {
+    width: 10%;
+    height: auto;
+    object-fit: contain;
+}
+
+.skill-icon-wrapper {
+    text-align: center;
+    position: relative; 
+}
+
+.skill-text {
+    position: absolute;
+    top: 110%; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    color: black;
+    padding: 2px 6px;
+    border-radius: 4px;
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+    pointer-events: none; 
+}
+
+.skill-icon-wrapper:hover .skill-text {
+    opacity: 1;
+}
