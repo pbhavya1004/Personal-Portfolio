@@ -1,9 +1,10 @@
 // Function to load all sections taking in the section id, the file path, and callback function (to run after all pages loaded as animation for twinkling won't work without it)
 function loadSection(sectionId, file_path, callback = null) {
     const section = document.getElementById(sectionId);
+    //error handling if that section doesn't exist or load
     if (!section) {
         console.error(`Section with ID ${sectionId} not found.`);
-        return; // Exit if the section doesn't exist
+        return; 
     }
 
     // Fetch the file (returns a promise when completed successfully returns a response object with methods to read the file)
@@ -27,45 +28,86 @@ function initializeCarousel() {
     const carousel = document.querySelector("[data-carousel]");
     //error handling to check if carousel found
     if (!carousel) {
-        console.error("Carousel not found in the DOM.");
-        return; 
+        console.error("Carousel not found.");
+        return;
     }
 
     //select the "slides" by the attribute data-slides
     const slides = carousel.querySelector("[data-slides]");
     //error handling to check if slides found
     if (!slides) {
-        console.error("Slides not found in the carousel.");
-        return; 
+        console.error("Slides not found.");
+        return;
     }
 
     ///select the buttons by the attribute data-carousel-button
     const buttons = document.querySelectorAll("[data-carousel-button]");
-
     //error handling if buttons not found
     if (buttons.length === 0) {
         console.error("Carousel buttons not found.");
-        return; 
+        return;
     }
 
+    
+
+    // defining elemnts or container that need updating along with slides
+    const descriptionContainer = document.querySelector(".details .description");
+    const projectLink = document.querySelector(".details .project-link");
+
+    //error handling if not loading or if cannot be found
+    if (!descriptionContainer || !projectLink) {
+        console.error("Description container or project link not found.");
+        return;
+    }
+
+    // helper function to help update description and link with each new slide
+    function updateDetails(slide) {
+
+        //get the new description via textcontent and new link as an href
+        const newDescription = slide.querySelector(".description")?.textContent;
+        const newLink = slide.querySelector("a")?.href;
+
+        //error handling if issue with new description or a project link
+        if (!newDescription || !newLink) {
+            console.error("Description or link is missing in the slide.");
+            return;
+        }
+
+        // Update the description and project link by setting equal to new values
+        descriptionContainer.textContent = newDescription;
+        projectLink.href = newLink;
+        // the content of ther text for project link is constantly "view project"
+        projectLink.textContent = "View Project"; 
+    }
+
+    // Set initial text and link based on the active slide
+    const activeSlide = slides.querySelector("[data-active]");
+    if (activeSlide) {
+        updateDetails(activeSlide); 
+    } else {
+        console.error("No slide found on initialization.");
+    }
 
     // For each button make sure there is an event on clickn
     buttons.forEach(button => {
         button.addEventListener("click", () => {
             //assigns values to buttons for indexing (if next) then 1 else -1 is the offset
             const offset = button.dataset.carouselButton === "next" ? 1 : -1; 
+
             //a slide is active if select the slide with attribute data-active
-            const activeSlide = slides.querySelector("[data-active]");
+            const currentActiveSlide = slides.querySelector("[data-active]");
+
             //if nothing on(no active slides) then error
-            if (!activeSlide) {
+            if (!currentActiveSlide) {
                 console.error("No active slide found.");
-                return; 
+                return;
             }
 
             //convert from a nodeList to array 
-            const slidesArray = Array.from(slides.children); 
+            const slidesArray = Array.from(slides.children);
+
             //the newIndex value for activeslide is the index of the active slide slide + offset
-            let newIndex = slidesArray.indexOf(activeSlide) + offset;
+            let newIndex = slidesArray.indexOf(currentActiveSlide) + offset;
 
             //Looping functionality: if the value of newIndex is < 0, wrap to last slide
             if (newIndex < 0) newIndex = slidesArray.length - 1;
@@ -74,12 +116,24 @@ function initializeCarousel() {
             if (newIndex >= slidesArray.length) newIndex = 0;
 
             // Update slides by removing the data-active from it
-            activeSlide.removeAttribute("data-active");
+            currentActiveSlide.removeAttribute("data-active");
+
             //add data active attribute to new active slide
             slidesArray[newIndex].setAttribute("data-active", "true");
+
+            // Update the details section with the new active slide
+            updateDetails(slidesArray[newIndex]);
         });
     });
+
 }
+
+
+
+
+
+
+
 
 // Load each part of the portfolio
 loadSection("header", "header.html");
