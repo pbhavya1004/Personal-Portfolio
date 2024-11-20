@@ -21,7 +21,7 @@ loadSection("about", "about.html");
 loadSection("experience", "experience.html");
 loadSection("projects", "projects.html");
 loadSection("skills", "skills.html");
-loadSection("contact", "contact.html");
+loadSection("contact", "contact.html", TwinkleCircles);
 
 // Smooth scroll function using functions getelementbyid and scrollintoview
 //takes in the sectionid which is the page you are trying to get to
@@ -39,7 +39,8 @@ function scroll_to_page(sectionId) {
 //A function to allow twinkling circles effect
 function TwinkleCircles() {
     // Select the circle container holding the whole home page
-    const container = document.querySelector('.circle-container');
+    const containers = document.querySelectorAll('.circle-container, .contact-container');
+
 
     //array of colors I wanted to use
     const colors = [
@@ -49,36 +50,37 @@ function TwinkleCircles() {
         'rgba(173, 216, 230, 0.5)'   
     ];
 
-    // create circles
-    for (let i = 0; i < 500; i++) {
-        const circle = document.createElement('div');
-        // add each circle to the circle class
-        circle.classList.add('circle');
+    containers.forEach(container => {
+        for (let i = 0; i < 500; i++) {
+            const circle = document.createElement('div');
+            // add each circle to the circle class
+            circle.classList.add('circle');
 
-        // Initialize the idea f having random sizes - between 1 and under 3 pixels
-        const size = Math.random() * 2 + 1; 
-        //now give the circles the random sizes applying them to width and height
-        circle.style.width = `${size}px`;
-        circle.style.height = `${size}px`;
+            // Initialize the idea f having random sizes - between 1 and under 3 pixels
+            const size = Math.random() * 2 + 1; 
+            //now give the circles the random sizes applying them to width and height
+            circle.style.width = `${size}px`;
+            circle.style.height = `${size}px`;
 
-        // Initialize the idea f having random position - between 0 and under 100% of screen 
-        const x = Math.random() * 100; 
-        const y = Math.random() * 100; 
-        //give the circles the randomized x and y positions as positions from left and top of screen
-        circle.style.left = `${x}vw`;
-        circle.style.top = `${y}vh`;
+            // Initialize the idea f having random position - between 0 and under 100% of screen 
+            const x = Math.random() * 100; 
+            const y = Math.random() * 100; 
+            //give the circles the randomized x and y positions as positions from left and top of screen
+            circle.style.left = `${x}vw`;
+            circle.style.top = `${y}vh`;
 
         
-        // allows you to select a random index value from 0 to 3 -> random * 4 gives 0 to under 4 -> floor rounds down to 0 to 3(int only)
-        const randomColor = colors[Math.floor(Math.random() * 4)];
-        //set the styles of the circle, background color to the randomly selected color
-        circle.style.backgroundColor = randomColor;
+            // allows you to select a random index value from 0 to 3 -> random * 4 gives 0 to under 4 -> floor rounds down to 0 to 3(int only)
+            const randomColor = colors[Math.floor(Math.random() * 4)];
+            //set the styles of the circle, background color to the randomly selected color
+            circle.style.backgroundColor = randomColor;
 
 
-        // Set a random animation delay(css property) to allows circles to create at different times(between 0 and under 1 second)
-        circle.style.animationDelay = `${Math.random()}s`; 
+            // Set a random animation delay(css property) to allows circles to create at different times(between 0 and under 1 second)
+            circle.style.animationDelay = `${Math.random()}s`; 
 
-        // Add the circle to selected container(circle-container)
-        container.appendChild(circle);
-    }
-}
+            // Add the circle to selected container(circle-container)
+            container.appendChild(circle);
+        }
+    }); 
+}  
