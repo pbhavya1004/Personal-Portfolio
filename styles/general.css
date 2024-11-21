@@ -26,7 +26,7 @@ html, body {
     
 }
 
- 
+#home { background-color: #061736;}
 #about { background-color: white; }
 #projects { background-color: #061736; }
 #skills { background-color: #49755e; }
