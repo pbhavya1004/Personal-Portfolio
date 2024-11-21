@@ -5,7 +5,7 @@ This is a personal website showcasing my skills in html, css and javascript. It 
 
 # To see this website please click on the below link:
 
-Link here
+https://bhavyapersonalportfolio.vercel.app
 
 # Attributions
 
