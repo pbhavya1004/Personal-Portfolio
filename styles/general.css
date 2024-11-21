@@ -12,6 +12,7 @@ html, body {
     overflow-y: scroll;
     scroll-snap-type: y mandatory; 
     scroll-snap-stop: always;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 
@@ -21,6 +22,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Times New Roman', Times, serif;
     
 }
 

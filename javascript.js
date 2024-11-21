@@ -129,12 +129,6 @@ function initializeCarousel() {
 }
 
 
-
-
-
-
-
-
 // Load each part of the portfolio
 loadSection("header", "header.html");
 // Run twinkling effect after the home page is done loading
